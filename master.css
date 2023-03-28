@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+:root {
+  --soft-red: hsl(10, 79%, 65%);
+  --cyan: hsl(186, 34%, 60%);
+  --dark-brown: hsl(25, 47%, 15%);
+  --medium-brown: hsl(28, 10%, 53%);
+  --cream: hsl(27, 66%, 92%);
+  --very-pale-orange: hsl(33, 100%, 98%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+  padding: 20px;
+} 
+
+.status_card {
+  width: 550px;
+}
+
+.status_card .head {
+  padding: 30px;
+  position: relative;
+  color: white;
+  background-color: var(--soft-red);
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.status_card .head span:last-of-type {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.status_card .head::before ,
+.status_card  .head::after {
+  box-sizing: border-box;
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.status_card .head::before {
+  border: 2px solid white;
+  right: 70px;
+  z-index: 2;
+}
+
+.status_card .head::after {
+  background-color: var(--dark-brown);
+  right: 40px;
+}
+
+.status_card .body {
+  background-color: white;
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.status_card .body h1 {
+  margin-bottom: 70px;
+}
+
+.status_card .body .days_status { 
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--cream);
+}
+
+.status_card .body .days_status .statu { 
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+  width: fit-content;
+  font-weight: 400;
+  color: var(--medium-brown);
+}
+
+.status_card .body .days_status .statu .level { 
+  background-color: var(--soft-red);
+  margin-bottom: 5px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  position: relative;
+  width: 50px;
+}
+
+.status_card .body .days_status .statu .level:hover {
+  background-color: hsl(10, 79%, 70%);;
+}
+
+.status_card .body .days_status .statu .level::before { 
+  content: attr(data-cost);
+  position: absolute;
+  top: -54px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--dark-brown);
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s linear, visibility 0.3s linear;
+}
+
+.status_card .body .days_status .statu .level:hover::before { 
+  opacity: 1 ;
+  visibility: visible;
+}
+
+.status_card .body .days_status .statu .level.top {
+  background-color: var(--cyan);
+}
+
+.status_card .body .days_status .statu .level.top:hover {
+  background-color: hsl(186, 34%, 70%);;
+}
+
+.status_card .body .total_status { 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 30px;
+}
+
+.status_card .body .total_status .left span:first-of-type {
+  color: var(--medium-brown);
+}
+
+.status_card .body .total_status .left span:last-of-type {
+  color: var(--dark-brown);
+  font-size: 45px;
+  font-weight: 700;
+}
+
+.status_card .body .total_status .right {
+  text-align: right;
+}
+
+.status_card .body .total_status .right span:first-of-type {
+  color: var(--dark-brown);
+  font-weight: 700;
+}
+
+
+.status_card .body .total_status .right span:last-of-type {
+  color: var(--medium-brown);
+}
+
+
+@media (max-width: 550px) {
+  .status_card {
+    width: 100%;
+  }
+
+  .status_card .body h1 {
+    font-size: 25px;
+  }
+
+  .status_card .body .total_status .left span:last-of-type {
+    font-size: 32px;
+  }
+
+  .status_card .body .days_status .statu { 
+    width: calc(100% / 9);
+  }
+
+  .status_card .body .days_status .statu .level { 
+    width: initial;
+  }
+
+}
